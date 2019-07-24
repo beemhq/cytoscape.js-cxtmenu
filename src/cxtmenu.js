@@ -60,8 +60,8 @@ let cxtmenu = function(params){
 
   function createMenuItems() {
     removeEles('.cxtmenu-item', parent);
-    let dtheta = 2 * Math.PI / (commands.length);
-    let theta1 = Math.PI / 2;
+    let dtheta = (2 * Math.PI * (options.menuArc / 360)) / (commands.length);
+    let theta1 = (Math.PI / 2) + (Math.PI*2*(options.menuRotation / 360));
     let theta2 = theta1 + dtheta;
 
     for (let i = 0; i < commands.length; i++) {
@@ -131,8 +131,8 @@ let cxtmenu = function(params){
 
     // draw background items
     c2d.fillStyle = options.fillColor;
-    let dtheta = 2*Math.PI/(commands.length);
-    let theta1 = Math.PI/2;
+    let dtheta = (2*Math.PI*(options.menuArc/360))/(commands.length);
+    let theta1 = Math.PI / 2 + Math.PI * 2 * (options.menuRotation / 360);
     let theta2 = theta1 + dtheta;
 
     for( let index = 0; index < commands.length; index++ ){
@@ -189,8 +189,8 @@ let cxtmenu = function(params){
   }
 
   function drawCommands( rx, ry, theta ){
-    let dtheta = 2*Math.PI/(commands.length);
-    let theta1 = Math.PI/2;
+    let dtheta = (2 * Math.PI * (options.menuArc / 360)) / commands.length;
+    let theta1 = Math.PI / 2 + Math.PI * 2 * (options.menuRotation / 360);
     let theta2 = theta1 + dtheta;
 
     theta1 += dtheta * activeCommandI;
@@ -476,8 +476,10 @@ let cxtmenu = function(params){
           theta = Math.PI + Math.abs(theta - Math.PI);
         }
 
-        let dtheta = 2*Math.PI/(commands.length);
-        let theta1 = Math.PI/2;
+        let dtheta =
+          (2 * Math.PI * (options.menuArc / 360)) / commands.length;
+        let theta1 =
+          Math.PI / 2 + Math.PI * 2 * (options.menuRotation / 360);
         let theta2 = theta1 + dtheta;
 
         for( let i = 0; i < commands.length; i++ ){
